@@ -25,6 +25,19 @@ h1 {
     /* Add any other styles as needed */
 }
 
+@font-face {
+    font-family: 'CustomFont';
+    src: url('customfont.woff2') format('woff2'), /* Modern Browsers */
+         url('customfont.woff') format('woff'); /* Older Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply custom font to elements with class 'custom-font' */
+.custom-font {
+    font-family: 'CustomFont', sans-serif;
+} 
+
 /* Media query for responsiveness */
 @media screen and (max-width: 768px) {
     /* Add responsive styles here */
@@ -46,4 +59,54 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1em 0;
+}
+
+/* Header */
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    width: 50%;
+}
+
+.header-right {
+    width: 50%;
+    text-align: right;
+}
+
+.title-custom-font {
+    font-family: 'CustomFont', sans-serif;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.name-neue-haas {
+    font-family: 'neue-haas-grotesk-text', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.portfolio-info p {
+    margin: 0;
+}
+
+.portfolio-info a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.year p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
