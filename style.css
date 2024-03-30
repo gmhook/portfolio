@@ -1,3 +1,11 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
 body {
     font-family: "neue-haas-grotesk-display", sans-serif;
     margin: 0;
@@ -25,10 +33,11 @@ h1 {
     /* Add any other styles as needed */
 }
 
+/* Custom font */
 @font-face {
     font-family: 'CustomFont';
-    src: url('customfont.woff2') format('woff2'), /* Modern Browsers */
-         url('customfont.woff') format('woff'); /* Older Browsers */
+    src: url('custom.woff2') format('woff2'), /* Modern Browsers */
+         url('custom.woff') format('woff'); /* Older Browsers */
     font-weight: normal;
     font-style: normal;
 }
@@ -43,57 +52,50 @@ h1 {
     /* Add responsive styles here */
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1em 0;
-}
-
-main {
-    padding: 2em;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1em 0;
-}
-
 /* Header */
 .header {
     background-color: #000;
     color: #fff;
     padding: 2rem;
     overflow: hidden;
+    height: 70vh; /* Set height to 70% of the viewport height */
 }
 
 .header-content {
     display: flex;
+    height: 100%;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
 }
 
-.header-left {
-    width: 50%;
-}
-
-.header-right {
-    width: 50%;
-    text-align: right;
+.header-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .title-custom-font {
     font-family: 'CustomFont', sans-serif;
-    font-size: 2.5rem;
+    font-size: 6rem; 
     margin: 0;
 }
 
 .name-neue-haas {
     font-family: 'neue-haas-grotesk-text', sans-serif;
-    font-size: 1.5rem;
+    font-size: 5rem; 
+    line-height: .8;
     margin: 0;
+}
+
+.header-info {
+    display: flex;
+}
+
+.portfolio-info {
+    width: 70%;
 }
 
 .portfolio-info p {
@@ -105,8 +107,119 @@ footer {
     text-decoration: none;
 }
 
+.year {
+    width: 30%;
+}
+
 .year p {
     margin: 0;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+}
+
+/* Main content */
+main {
+    padding: 2em;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Burger menu styles */
+.burger-menu {
+    position: fixed;
+    top: 2rem; /* Adjust as needed */
+    right: 2rem; /* Adjust as needed */
+    z-index: 4; /* Ensure it's above other content */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.line {
+    width: 50px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li a {
+    color: #fff;
+    font-size: 5rem; /* Increased font size */
+    text-decoration: none; /* Removed default underline */
+    text-align: left; /* Aligned left */
+    display: inline-block; /* Converted to inline-block element */
+    position: relative; /* Required for pseudo-elements */
+    font-family: "neue-haas-grotesk-display", sans-serif;
+}
+
+.menu ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px; /* Adjust as needed */
+    height: 5px; /* Height of the underline */
+    background-color: #fff; /* Color of the underline */
+    width: 100%; /* Width follows the width of the word */
+    transition: width 0.3s ease; /* Transition for width change */
+}
+
+.menu ul li a:hover::after {
+    width: 0; /* Hide underline on hover */
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2; /* Ensure it's above the menu */
+    transition: opacity 0.5s, visibility 0s linear 0.5s; /* Delay visibility change */
+}
+
+.menu-open.menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background-color: #36373b;
+    z-index: 3; /* Ensure it's above the overlay */
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s; /* Fade-in transition */
+}
+
+.menu-open.menu {
+    opacity: 1;
+    pointer-events: auto; /* Enable click events */
+}
+
+.menu nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 2rem;
 }
