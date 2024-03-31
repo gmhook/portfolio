@@ -42,6 +42,12 @@ h1 {
     font-style: normal;
 }
 
+/* CSS to style the tabbed first line of paragraph */
+.tabbed-first-line {
+    text-indent: 40px; /* Adjust as needed */
+    margin: 0; /* Reset default margin */
+}
+
 /* Apply custom font to elements with class 'custom-font' */
 .custom-font {
     font-family: 'CustomFont', sans-serif;
@@ -58,7 +64,8 @@ h1 {
     color: #fff;
     padding: 2rem;
     overflow: hidden;
-    height: 70vh; /* Set height to 70% of the viewport height */
+    height: 50vh; /* Set height to 70% of the viewport height */
+    min-height: 560px;
 }
 
 .header-content {
@@ -90,12 +97,34 @@ h1 {
     margin: 0;
 }
 
+@media screen and (min-width: 1400px) {
+    .title-custom-font {
+        font-size: 8rem; 
+    }  
+    .name-neue-haas {
+        font-size: 7rem; 
+    }
+}
+
+.case-study .title-custom-font  {
+    font-size: 3rem; 
+}
+
+.case-study .name-neue-haas {
+    font-size: 2.7rem; 
+}
+
+
 .header-info {
     display: flex;
 }
 
+.header-title {
+    margin-bottom:1rem;
+}
+
 .portfolio-info {
-    width: 70%;
+    width: 50%;
 }
 
 .portfolio-info p {
@@ -108,7 +137,13 @@ h1 {
 }
 
 .year {
-    width: 30%;
+    width: 40%;
+}
+
+@media screen and (min-width: 1400px) {
+    .year {
+        width: 30%;
+    }
 }
 
 .year p {
@@ -120,19 +155,30 @@ h1 {
 /* Main content */
 main {
     padding: 2em;
+    position: relative;
 }
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #000000;
     color: #fff;
-    text-align: center;
-    padding: 1em 0;
+    text-align: right;
+    padding: 2em;
+}
+
+footer p {
+    font-family: 'CustomFont', sans-serif;
+    font-size: 3rem;
+}
+
+footer span {
+    font-family: 'neue-haas-grotesk-display', sans-serif;
+
 }
 
 /* Burger menu styles */
 .burger-menu {
-    position: fixed;
+    position: absolute;
     top: 2rem; /* Adjust as needed */
     right: 2rem; /* Adjust as needed */
     z-index: 4; /* Ensure it's above other content */
@@ -185,34 +231,39 @@ footer {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 0;
+    height: 0;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
-    z-index: 2; /* Ensure it's above the menu */
-    transition: opacity 0.5s, visibility 0s linear 0.5s; /* Delay visibility change */
+    z-index: 2; /* Ensure it's above the content */
+    transition: opacity 0.5s, visibility 0s linear 0.5s, width 0.5s, height 0.5s;
+    pointer-events: none; /* Disable pointer events when hidden */
 }
 
-.menu-open.menu-overlay {
+.menu-open .menu-overlay {
+    width: 100%;
+    height: 100%;
     opacity: 1;
     visibility: visible;
+    pointer-events: auto; /* Enable pointer events when visible */
 }
 
 .menu {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    left: -100%; /* Initially off-screen */
+    width: 100%; /* Adjust as needed */
+    height: 100%;
     background-color: #36373b;
     z-index: 3; /* Ensure it's above the overlay */
     overflow: hidden;
     opacity: 0;
-    transition: opacity 0.5s; /* Fade-in transition */
+    transition: opacity 0.5s, left 0.5s; /* Fade-in transition */
 }
 
 .menu-open.menu {
+    left: 0; /* Move onto the screen */
     opacity: 1;
     pointer-events: auto; /* Enable click events */
 }
@@ -222,4 +273,196 @@ footer {
     bottom: 0;
     left: 0;
     margin: 2rem;
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative; /* Make the intro div a positioning context */
+}
+
+.intro-text {
+    width: 50%;
+}
+
+.intro-text h2 {
+    font-family: "neue-haas-grotesk-display", sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    text-decoration-line: underline;
+    text-decoration-thickness: 5px;
+}
+
+@media screen and (min-width: 1400px) {
+    .intro-text h2 {
+        font-size: 6rem;
+    }     
+}
+
+.intro-text .underline-custom {
+    position: relative;
+    text-decoration: none;
+}
+
+.custom-font {
+    font-family: 'CustomFont', sans-serif;
+    text-decoration: none;
+}
+
+.intro-image {
+    width: 40%;
+    text-align: center;
+}
+
+@media screen and (min-width: 1400px) {
+    .intro-image {
+        width: 30%;
+    }     
+}
+
+
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.intro-image p {
+    font-family: "neue-haas-grotesk-text", sans-serif;
+    text-align: left;
+    font-size: .8rem;
+    margin-top: 4px;
+    width: 50%;
+}
+
+.body-copy {
+    margin-top: 2rem;
+    width: 80%;
+}
+
+@media screen and (min-width: 1400px) {
+    .intro-text .body-copy {
+        font-size: 2rem;
+    }   
+    .intro-image p {
+    font-size: 1.5rem;
+    }  
+}
+
+.red-circle-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.red-circle-container.arrow {
+    justify-content: flex-start;
+}
+
+.red-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Adjust size as needed */
+    height: 60px; /* Adjust size as needed */
+    border-radius: 50%; /* To create a circular shape */
+    background-color: #ff3900; /* Red circular background */
+}
+
+@media screen and (min-width: 1400px) {
+    .red-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px; /* Adjust size as needed */
+        height: 100px; /* Adjust size as needed */
+        border-radius: 50%; /* To create a circular shape */
+    }
+        
+}
+
+.red-circle img {
+    width: 70%; /* Adjust as needed */
+    height: auto;
+    padding: .2rem;
+}
+
+.red-circle.arrow {
+    display: flex;
+}
+
+.red-circle.arrow img {
+    width: initial; /* Adjust as needed */
+    height: initial;
+    padding: 1rem;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Responsive grid with minimum width of 250px */
+    grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+@media screen and (min-width: 1400px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(900px, 1fr)); /* Adjust the columns for larger screens */
+    }
+}
+
+
+.portfolio-entry img {
+    max-width: 100%;
+    height: auto;
+}
+
+.portfolio-entry h3 {
+    font-family: "neue-haas-grotesk-display", sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    text-decoration-line: underline;
+    text-decoration-thickness: 4px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.portfolio-entry h4 {
+    font-family: 'CustomFont', sans-serif;
+    font-size: 4rem;
+}
+
+
+.portfolio-entry a:hover {
+    background-color: #0056b3;
+}
+
+/* Remove existing ticker tape styles */
+/* You can keep this section if you're using ticker tape styles elsewhere */
+.ticker-tape {
+    overflow: hidden;
+}
+
+.ticker-text {
+    white-space: nowrap;
+    overflow: hidden; /* Hide overflow content */
+    font-size: 5rem;
+    font-family: 'CustomFont', sans-serif;
+    margin-left: -100%; /* Initial position off-screen */
+    animation: ticker 80s linear infinite; /* Adjust duration as needed */
+}
+
+@media screen and (min-width: 1400px) {
+    .ticker-text {
+        font-size: 9rem;
+    }
+    
+}
+
+
+@keyframes ticker {
+    0% {
+        margin-left: -100%; /* Start off-screen */
+    }
+    100% {
+        margin-left: 0; /* Move on-screen */
+    }
 }
